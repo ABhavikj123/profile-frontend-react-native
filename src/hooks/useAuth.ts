@@ -57,8 +57,8 @@ export function useAuth() {
     async (
       name: string,
       email: string,
+      bio: string | null = null,
       password: string,
-      bio: string | null = null
     ): Promise<User> => {
       try {
         setLoading(true);
@@ -67,8 +67,8 @@ export function useAuth() {
         const { user: createdUser } = await signupRequest({
           name: name.trim(),
           email: email.trim(),
-          password,
           bio,
+          password,
         });
 
         if (!createdUser) {
